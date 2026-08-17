@@ -70,6 +70,7 @@ public class MatchService {
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + id));
         return toResponse(match);
     }
+
     public MatchResponse recordToss(Long matchId, TossRequest request) {
         Match match = matchRepository.findById(matchId)
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + matchId));
