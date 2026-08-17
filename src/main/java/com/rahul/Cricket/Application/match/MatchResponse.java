@@ -19,4 +19,5 @@ public class MatchResponse {
     private MatchStatus status;
     private Long tossWinnerTeamId;
     private TossDecision tossDecision;
+    private Long winnerTeamId;
 }

@@ -61,7 +61,8 @@ public class MatchService {
                 match.getVenue(),
                 match.getStatus(),
                 tossWinnerId,
-                match.getTossDecision()
+                match.getTossDecision(),
+                match.getWinner() != null ? match.getWinner().getId() : null
         );
     }
 

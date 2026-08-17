@@ -48,4 +48,8 @@ public class Match {
     @Enumerated(EnumType.STRING)
     @Column(name = "toss_decision")
     private TossDecision tossDecision;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "winner_team_id")
+    private Team winner;
 }

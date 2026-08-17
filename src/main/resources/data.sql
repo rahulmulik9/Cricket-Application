@@ -67,22 +67,51 @@ INSERT INTO players (name, jersey_number, team_id) VALUES ('HYD Player 7', 7, 6)
 
 
 -- ===== MATCHES (Group Stage Schedule) =====
+---- Group A — Turf 1
+--INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
+--VALUES (1, 2, 'A', '2026-08-22', '09:00:00', 'Turf 1', 'SCHEDULED');
+--
+--INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
+--VALUES (1, 3, 'A', '2026-08-22', '10:00:00', 'Turf 1', 'SCHEDULED');
+--
+--INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
+--VALUES (2, 3, 'A', '2026-08-22', '11:00:00', 'Turf 1', 'SCHEDULED');
+--
+---- Group B — Turf 2
+--INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
+--VALUES (4, 5, 'B', '2026-08-22', '09:00:00', 'Turf 2', 'SCHEDULED');
+--
+--INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
+--VALUES (4, 6, 'B', '2026-08-22', '10:00:00', 'Turf 2', 'SCHEDULED');
+--
+--INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
+--VALUES (5, 6, 'B', '2026-08-22', '11:00:00', 'Turf 2', 'SCHEDULED');
+
+
+-- ===== MATCHES (Group Stage Schedule) =====
+
 -- Group A — Turf 1
-INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
-VALUES (1, 2, 'A', '2026-08-22', '09:00:00', 'Turf 1', 'SCHEDULED');
+-- Mumbai beats Chennai
+INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status, winner_team_id)
+VALUES (1, 2, 'A', '2026-08-22', '09:00:00', 'Turf 1', 'COMPLETED', 1);
 
-INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
-VALUES (1, 3, 'A', '2026-08-22', '10:00:00', 'Turf 1', 'SCHEDULED');
+-- Mumbai beats Delhi
+INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status, winner_team_id)
+VALUES (1, 3, 'A', '2026-08-22', '10:00:00', 'Turf 1', 'COMPLETED', 1);
 
-INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
-VALUES (2, 3, 'A', '2026-08-22', '11:00:00', 'Turf 1', 'SCHEDULED');
+-- Chennai vs Delhi — not played yet
+INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status, winner_team_id)
+VALUES (2, 3, 'A', '2026-08-22', '11:00:00', 'Turf 1', 'SCHEDULED', NULL);
 
 -- Group B — Turf 2
-INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
-VALUES (4, 5, 'B', '2026-08-22', '09:00:00', 'Turf 2', 'SCHEDULED');
+-- Punjab beats Rajasthan
+INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status, winner_team_id)
+VALUES (4, 5, 'B', '2026-08-22', '09:00:00', 'Turf 2', 'COMPLETED', 4);
 
-INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
-VALUES (4, 6, 'B', '2026-08-22', '10:00:00', 'Turf 2', 'SCHEDULED');
+-- Punjab beats Hyderabad
+INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status, winner_team_id)
+VALUES (4, 6, 'B', '2026-08-22', '10:00:00', 'Turf 2', 'COMPLETED', 4);
 
-INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status)
-VALUES (5, 6, 'B', '2026-08-22', '11:00:00', 'Turf 2', 'SCHEDULED');
+-- Rajasthan vs Hyderabad — not played yet
+INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status, winner_team_id)
+VALUES (5, 6, 'B', '2026-08-22', '11:00:00', 'Turf 2', 'SCHEDULED', NULL);
