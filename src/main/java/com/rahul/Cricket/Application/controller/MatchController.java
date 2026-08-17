@@ -28,4 +28,9 @@ public class MatchController {
     public ResponseEntity<List<MatchResponse>> getAllMatches() {
         return ResponseEntity.ok(matchService.getAllMatches());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MatchResponse> getMatchById(@PathVariable Long id) {
+        return ResponseEntity.ok(matchService.getMatchById(id));
+    }
 }

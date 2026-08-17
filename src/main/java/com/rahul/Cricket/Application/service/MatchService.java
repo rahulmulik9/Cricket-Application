@@ -65,4 +65,10 @@ public class MatchService {
                 match.getStatus()
         );
     }
+
+    public MatchResponse getMatchById(Long id) {
+        Match match = matchRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + id));
+        return toResponse(match);
+    }
 }
