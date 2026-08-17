@@ -10,8 +10,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create    #each time delete old data and then create new data
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+    defer-datasource-initialization: true   #wait until Hibernate finishes creating the schema, then run data.sql
+
+  sql:
+    init:
+      mode: always  #alway indicate that run the sql in resource no matter if data is present or not, even though you're on a real (non-embedded) database
