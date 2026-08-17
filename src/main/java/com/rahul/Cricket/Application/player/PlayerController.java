@@ -1,8 +1,5 @@
-package com.rahul.Cricket.Application.controller;
+package com.rahul.Cricket.Application.player;
 
-import com.rahul.Cricket.Application.dto.PlayerRequest;
-import com.rahul.Cricket.Application.dto.PlayerResponse;
-import com.rahul.Cricket.Application.service.PlayerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

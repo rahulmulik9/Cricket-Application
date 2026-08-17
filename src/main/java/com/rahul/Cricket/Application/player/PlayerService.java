@@ -1,13 +1,9 @@
-package com.rahul.Cricket.Application.service;
+package com.rahul.Cricket.Application.player;
 
-import com.rahul.Cricket.Application.dto.PlayerRequest;
-import com.rahul.Cricket.Application.dto.PlayerResponse;
-import com.rahul.Cricket.Application.entity.Player;
-import com.rahul.Cricket.Application.entity.Team;
-import com.rahul.Cricket.Application.exception.BusinessRuleViolationException;
-import com.rahul.Cricket.Application.exception.ResourceNotFoundException;
-import com.rahul.Cricket.Application.repository.PlayerRepository;
-import com.rahul.Cricket.Application.repository.TeamRepository;
+import com.rahul.Cricket.Application.team.Team;
+import com.rahul.Cricket.Application.common.exception.BusinessRuleViolationException;
+import com.rahul.Cricket.Application.common.exception.ResourceNotFoundException;
+import com.rahul.Cricket.Application.team.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,6 @@
-package com.rahul.Cricket.Application.entity;
+package com.rahul.Cricket.Application.player;
 
+import com.rahul.Cricket.Application.team.Team;
 import jakarta.persistence.*;
 import lombok.Data;
 

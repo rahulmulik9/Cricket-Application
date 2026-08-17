@@ -1,6 +1,5 @@
-package com.rahul.Cricket.Application.repository;
+package com.rahul.Cricket.Application.player;
 
-import com.rahul.Cricket.Application.entity.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

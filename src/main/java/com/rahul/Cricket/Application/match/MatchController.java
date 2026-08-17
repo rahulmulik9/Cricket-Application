@@ -1,8 +1,5 @@
-package com.rahul.Cricket.Application.controller;
+package com.rahul.Cricket.Application.match;
 
-import com.rahul.Cricket.Application.dto.MatchRequest;
-import com.rahul.Cricket.Application.dto.MatchResponse;
-import com.rahul.Cricket.Application.service.MatchService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,5 +29,13 @@ public class MatchController {
     @GetMapping("/{id}")
     public ResponseEntity<MatchResponse> getMatchById(@PathVariable Long id) {
         return ResponseEntity.ok(matchService.getMatchById(id));
+    }
+
+    @PostMapping("/{id}/toss")
+    public ResponseEntity<MatchResponse> recordToss(
+            @PathVariable Long id,
+            @Valid @RequestBody TossRequest request) {
+        MatchResponse response = matchService.recordToss(id, request);
+        return ResponseEntity.ok(response);
     }
 }

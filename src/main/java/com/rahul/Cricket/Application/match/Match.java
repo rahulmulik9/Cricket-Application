@@ -1,5 +1,6 @@
-package com.rahul.Cricket.Application.entity;
+package com.rahul.Cricket.Application.match;
 
+import com.rahul.Cricket.Application.team.Team;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -38,4 +39,13 @@ public class Match {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private MatchStatus status;
+
+    // Toss info — null until toss is recorded
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "toss_winner_team_id")
+    private Team tossWinner;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "toss_decision")
+    private TossDecision tossDecision;
 }

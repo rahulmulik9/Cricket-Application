@@ -1,9 +1,5 @@
-package com.rahul.Cricket.Application.service;
+package com.rahul.Cricket.Application.team;
 
-import com.rahul.Cricket.Application.dto.TeamRequest;
-import com.rahul.Cricket.Application.dto.TeamResponse;
-import com.rahul.Cricket.Application.entity.Team;
-import com.rahul.Cricket.Application.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

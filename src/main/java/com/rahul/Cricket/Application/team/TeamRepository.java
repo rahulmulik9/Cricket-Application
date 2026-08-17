@@ -1,6 +1,5 @@
-package com.rahul.Cricket.Application.repository;
+package com.rahul.Cricket.Application.team;
 
-import com.rahul.Cricket.Application.entity.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TeamRepository extends JpaRepository<Team,Long> {

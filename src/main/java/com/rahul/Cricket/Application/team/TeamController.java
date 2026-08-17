@@ -1,11 +1,7 @@
-package com.rahul.Cricket.Application.controller;
+package com.rahul.Cricket.Application.team;
 
-import com.rahul.Cricket.Application.dto.TeamRequest;
-import com.rahul.Cricket.Application.dto.TeamResponse;
-import com.rahul.Cricket.Application.service.TeamService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

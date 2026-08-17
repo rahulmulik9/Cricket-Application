@@ -1,6 +1,5 @@
-package com.rahul.Cricket.Application.dto;
+package com.rahul.Cricket.Application.match;
 
-import com.rahul.Cricket.Application.entity.MatchStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -18,4 +17,6 @@ public class MatchResponse {
     private LocalTime matchTime;
     private String venue;
     private MatchStatus status;
+    private Long tossWinnerTeamId;
+    private TossDecision tossDecision;
 }

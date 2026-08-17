@@ -1,4 +1,4 @@
-package com.rahul.Cricket.Application.dto;
+package com.rahul.Cricket.Application.player;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

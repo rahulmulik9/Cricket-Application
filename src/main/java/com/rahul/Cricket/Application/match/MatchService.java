@@ -1,14 +1,9 @@
-package com.rahul.Cricket.Application.service;
+package com.rahul.Cricket.Application.match;
 
-import com.rahul.Cricket.Application.dto.MatchRequest;
-import com.rahul.Cricket.Application.dto.MatchResponse;
-import com.rahul.Cricket.Application.entity.Match;
-import com.rahul.Cricket.Application.entity.MatchStatus;
-import com.rahul.Cricket.Application.entity.Team;
-import com.rahul.Cricket.Application.exception.BusinessRuleViolationException;
-import com.rahul.Cricket.Application.exception.ResourceNotFoundException;
-import com.rahul.Cricket.Application.repository.MatchRepository;
-import com.rahul.Cricket.Application.repository.TeamRepository;
+import com.rahul.Cricket.Application.team.Team;
+import com.rahul.Cricket.Application.common.exception.BusinessRuleViolationException;
+import com.rahul.Cricket.Application.common.exception.ResourceNotFoundException;
+import com.rahul.Cricket.Application.team.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +49,8 @@ public class MatchService {
     }
 
     private MatchResponse toResponse(Match match) {
+        Long tossWinnerId = match.getTossWinner() != null ? match.getTossWinner().getId() : null;
+
         return new MatchResponse(
                 match.getId(),
                 match.getTeam1().getId(),
@@ -62,7 +59,9 @@ public class MatchService {
                 match.getMatchDate(),
                 match.getMatchTime(),
                 match.getVenue(),
-                match.getStatus()
+                match.getStatus(),
+                tossWinnerId,
+                match.getTossDecision()
         );
     }
 
@@ -70,5 +69,34 @@ public class MatchService {
         Match match = matchRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + id));
         return toResponse(match);
+    }
+    public MatchResponse recordToss(Long matchId, TossRequest request) {
+        Match match = matchRepository.findById(matchId)
+                .orElseThrow(() -> new ResourceNotFoundException("Match not found with id: " + matchId));
+
+        if (match.getStatus() != MatchStatus.SCHEDULED) {
+            throw new BusinessRuleViolationException(
+                    "Toss can only be recorded for a SCHEDULED match. Current status: " + match.getStatus()
+            );
+        }
+
+        Long team1Id = match.getTeam1().getId();
+        Long team2Id = match.getTeam2().getId();
+        Long tossWinnerId = request.getTossWinnerTeamId();
+
+        if (!tossWinnerId.equals(team1Id) && !tossWinnerId.equals(team2Id)) {
+            throw new BusinessRuleViolationException(
+                    "Toss winner must be one of the two teams playing this match"
+            );
+        }
+
+        Team tossWinner = teamRepository.findById(tossWinnerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Team not found with id: " + tossWinnerId));
+
+        match.setTossWinner(tossWinner);
+        match.setTossDecision(request.getTossDecision());
+
+        Match saved = matchRepository.save(match);
+        return toResponse(saved);
     }
 }

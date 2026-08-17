@@ -1,4 +1,4 @@
-package com.rahul.Cricket.Application.dto;
+package com.rahul.Cricket.Application.player;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

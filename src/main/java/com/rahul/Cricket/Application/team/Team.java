@@ -1,4 +1,4 @@
-package com.rahul.Cricket.Application.entity;
+package com.rahul.Cricket.Application.team;
 
 import jakarta.persistence.*;
 import lombok.Data;
