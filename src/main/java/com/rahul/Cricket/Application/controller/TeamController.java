@@ -21,7 +21,8 @@ public class TeamController {
     @PostMapping
     public ResponseEntity<TeamResponse> createTeam(@Valid @RequestBody TeamRequest request) {
         TeamResponse response = teamService.createTeam(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        //return ResponseEntity.status(HttpStatus.CREATED).body(response);  //both method are okay. this is older and below is newer
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping
