@@ -4,6 +4,8 @@ import com.rahul.Cricket.Application.dto.PlayerRequest;
 import com.rahul.Cricket.Application.dto.PlayerResponse;
 import com.rahul.Cricket.Application.entity.Player;
 import com.rahul.Cricket.Application.entity.Team;
+import com.rahul.Cricket.Application.exception.BusinessRuleViolationException;
+import com.rahul.Cricket.Application.exception.ResourceNotFoundException;
 import com.rahul.Cricket.Application.repository.PlayerRepository;
 import com.rahul.Cricket.Application.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,15 +17,24 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PlayerService {
 
+    private static final int MAX_SQUAD_SIZE = 7;
+
     private final PlayerRepository playerRepository;
     private final TeamRepository teamRepository;
 
     public PlayerResponse addPlayer(Long teamId, PlayerRequest request) {
         Team team = teamRepository.findById(teamId)
-                .orElseThrow(() -> new RuntimeException("Team not found with id: " + teamId));
+                .orElseThrow(() -> new ResourceNotFoundException("Team not found with id: " + teamId));
+
+        long currentSquadSize = playerRepository.countByTeamId(teamId);
+        if (currentSquadSize >= MAX_SQUAD_SIZE) {
+            throw new BusinessRuleViolationException(
+                    "Team already has the maximum squad size of " + MAX_SQUAD_SIZE + " players"
+            );
+        }
 
         if (playerRepository.existsByTeamIdAndJerseyNumber(teamId, request.getJerseyNumber())) {
-            throw new RuntimeException(
+            throw new BusinessRuleViolationException(
                     "Jersey number " + request.getJerseyNumber() + " already used in this team"
             );
         }
@@ -38,6 +49,9 @@ public class PlayerService {
     }
 
     public List<PlayerResponse> getPlayersByTeam(Long teamId) {
+        teamRepository.findById(teamId)
+                .orElseThrow(() -> new ResourceNotFoundException("Team not found with id: " + teamId));
+
         return playerRepository.findByTeamId(teamId)
                 .stream()
                 .map(this::toResponse)
