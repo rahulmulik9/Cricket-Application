@@ -115,3 +115,10 @@ VALUES (4, 6, 'B', '2026-08-22', '10:00:00', 'Turf 2', 'COMPLETED', 4);
 -- Rajasthan vs Hyderabad — not played yet
 INSERT INTO matches (team1_id, team2_id, group_name, match_date, match_time, venue, status, winner_team_id)
 VALUES (5, 6, 'B', '2026-08-22', '11:00:00', 'Turf 2', 'SCHEDULED', NULL);
+
+
+
+-- ===== USERS =====
+INSERT INTO users (username, password, role) VALUES ('admin', '$2b$10$PMFGeGi4yTUOyYyZUkgD5eTUm/JSYSNXBZEsrvcp1zFg77xpemAH2', 'ADMIN');
+INSERT INTO users (username, password, role) VALUES ('scorer1', '$2b$10$jSSF5l7ndPEqRkZCdtGM.uut7RUrrStSO2QJznwUcwq1KjBPE5QwO', 'SCORER');
+INSERT INTO users (username, password, role) VALUES ('viewer1', '$2b$10$0u5saZ6hTZct052ewrcboux9GNOIyahCWlK0dopdBVwoHdqDBwJa2', 'VIEWER');
